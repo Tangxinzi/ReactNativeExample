@@ -16,7 +16,6 @@ import {
   Text,
   useColorScheme,
   View,
-  Button
 } from 'react-native';
 
 import {
@@ -26,86 +25,6 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator, CardStyleInterpolators } from 'react-navigation-stack';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { CardStackStyleInterpolator } from 'react-navigation-stack/src/vendor/index'
-
-class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Home'
-  };
-
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text onPress={() => this.props.navigation.navigate('Modal')}>Home Screen</Text>
-        <Text style={{ marginTop: 20 }} onPress={() => this.props.navigation.navigate('Detail')}>Detail Screen</Text>
-      </View>
-    );
-  }
-}
-
-class DetailScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Detail'
-  };
-
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text onPress={() => this.props.navigation.goBack()}>Detail Screen</Text>
-      </View>
-    );
-  }
-}
-
-class ModalScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Modal'
-  };
-
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text onPress={() => this.props.navigation.goBack()}>This is a modal!</Text>
-      </View>
-    );
-  }
-}
-
-const AppNavigator = createStackNavigator(
-  {
-    Home: {
-      screen: HomeScreen,
-    },
-    Detail: {
-      screen: DetailScreen,
-    },
-  },
-  {
-    mode: 'card'
-  }
-);
-
-const RootStack = createStackNavigator(
-  {
-    App: {
-      screen: AppNavigator,
-      navigationOptions: {
-        header: null
-      }
-    },
-    Modal: {
-      screen: ModalScreen,
-    },
-  },
-  {
-    mode: 'modal',
-    // headerMode: 'none',
-  }
-);
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -190,4 +109,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createAppContainer(RootStack);
+export default App;
